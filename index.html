@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Alberlys</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lora:ital,wght@0,400;1,400&display=swap');
+
+        body {
+            background-color: #FFF5F7; /* Rosa pálido romántico */
+            color: #4A0E1B; /* Rojo vino elegante */
+            font-family: 'Lora', serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Centra el contenedor verticalmente si hay espacio */
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .foto-lateral {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20vw; /* El ancho se adapta al tamaño de la pantalla */
+            max-width: 280px;
+            min-width: 150px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(74, 14, 27, 0.2);
+            border: 4px solid white;
+            object-fit: cover;
+            z-index: -1; /* Mantiene las fotos por detrás de la carta */
+            transition: all 0.3s ease;
+        }
+
+        .foto-izquierda {
+            left: 3%;
+        }
+
+        .foto-derecha {
+            right: 3%;
+        }
+
+        @media (max-width: 1100px) {
+            .foto-lateral {
+                opacity: 0.25; /* Se vuelven transparentes como fondo para no tapar la carta */
+                filter: grayscale(30%) sepia(20%); /* Un tono nostálgico para el fondo */
+            }
+            .foto-izquierda {
+                left: -5%;
+            }
+            .foto-derecha {
+                right: -5%;
+            }
+        }
+
+        .container {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(74, 14, 27, 0.1);
+            text-align: center;
+            border: 2px solid #FADadd;
+            z-index: 1; /* Asegura que la carta esté siempre al frente */
+            position: relative;
+        }
+
+        .foto-principal {
+            width: 100%;
+            max-width: 600px; /* Tamaño ideal para que no sea muy invasiva */
+            height: auto;
+            border-radius: 15px; /* Bordes suaves y circulares */
+            box-shadow: 0 8px 20px rgba(74, 14, 27, 0.15); /* Sombra romántica */
+            margin-bottom: 25px;
+            border: 3px solid #FFF5F7; /* Borde delicado */
+            object-fit: cover;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #800606;
+        }
+
+        .versiculo {
+            font-style: italic;
+            color: #c49a13; /* Dorado cálido */
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .carta {
+            text-align: justify;
+            line-height: 1.8;
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+        .firma-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed #c49c19;
+        }
+
+        canvas {
+            border: 1px solid #d6a96e;
+            border-radius: 8px;
+            background-color: #FAFAFA;
+            cursor: crosshair;
+            touch-action: none; /* Importante para firmar en móvil */
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #8B0000;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-family: 'Playfair Display', serif;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #600000;
+        }
+
+        .limpiar {
+            background-color: transparent;
+            color: #8B0000;
+            border: 1px solid #8B0000;
+            margin-left: 10px;
+        }
+
+        .limpiar:hover {
+            background-color: #FFF5F7;
+        }
+
+        #mensaje-exito {
+            display: none;
+            margin-top: 20px;
+            font-size: 20px;
+            font-family: 'Playfair Display', serif;
+            color: #228B22; /* Verde suave de aceptación */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <img src="/foto/IMG_1540.jpg" alt="Jonathan" class="foto-lateral foto-izquierda">
+        <img src="/foto/IMG_0519.jpg" alt="Alberlys" class="foto-lateral foto-derecha">
+
+        <img src="/foto/foto1.png" alt="Nuestro significado especial" class="foto-principal">
+
+        <h1>El tiempo de dios y la promesa de un corazón nuevo</h1>
+        <p class="versiculo">"Uno solo puede ser vencido, pero dos pueden resistir. ¡La cuerda de tres hilos no se rompe fácilmente!" <br> — Eclesiastés 4:12</p>
+
+        <div class="carta">
+            <p><strong>Querida Alberlys,</strong></p>
+            <p>Cuando miro hacia atrás, me doy cuenta de que los tiempos de Dios son verdaderamente perfectos... <em> <br> <br>Quiero iniciar esta carta diciendo que agradezco el tiempo que hemos podido compartir conociendo partes del otro en este casi año y medio, sabiendo que han sido tiempos de cambio en la vida de cada uno.
+                <br>
+                <br>Ha pasado un gran tiempo desde que nos dimos el primer hola y presentándonos como completos desconocidos, esa fecha fue en noviembre del 2022. Como te lo he comentado, el verte por primera vez despertó curiosidad en mi, tu físico era una carta de presentación que mi vista le impactó y mi cerebro solo pudo pensar “que bonita es”, posterior a eso fue a más, porque ví como eras como persona y la amabilidad y bondad que transmitías me decía que no eras solo una cara bonita, sino que tenías la cualidades que cualquier hombre racional necesita en su vida. 
+                <br>
+                <br>La primera impresión pasó la prueba, y de verdad quería conocerte, saber de ti más, quien eras ? ¿qué más hacías ? ¿Qué te gustaba ? conocerte, pero eso no se pudo primero por mi tal vez timidez de conocerte y por que no era el momento oportuno para eso, si lo hacía me iba a dar cuenta que no tenías la disponibilidad para entablar esos espacios por tu momento de vida y sentimientos. El tiempo pasa, y Dios mueve los hilos sabiendo que cada uno necesitaba seguir viviendo, crecer, aprender, llorar, sufrir, eran parte de la experiencia que la vida nos depara para ser de alguna forma maduros o con conocimientos de que queremos realmente para nosotros. Ambos sufrimos en ese trayecto, nos aferramos a ser queridos y amados, de forzar momentos y decisiones que ya no nos incumben pero, de eso tratan los procesos. 
+                <br>
+                <br>Para entonces ya era noviembre de 2024, y cada uno se había aferrado a no volver abrir las puertas al amor para no volver pasar por una experiencia igual. Pero, como ya lo he comentado Dios trabaja de forma que a nosotros nos cuesta asimilar, le dimos bastante trabajo al punto que nuestra reconexión cayó de la forma menos esperada y sin saber que eso podría desencadenar una historia que ahorita nos lleva al punto donde nos encontramos. 
+                <br>
+                <br>Hoy me sorprendo demasiado sabiendo lo que pasabas en esos tiempos como aún con tu fuerte crisis me abriste las puertas de vida para poder conocerte y compartir espacios, y de alguna forma apoyándonos en las actividades que el otro requería, lo recuerdo y pienso que de nuevo Dios te permitió entender que no todos somos iguales, y que cuando menos te lo esperas llega una persona que busca sostenerte y darte el empujón que tu vida necesitaba, por eso agradezco siempre que eso haya pasado así, conocerte fue mi bocanada de aire fresco para mi vida, fue ese faro de luz entre las tinieblas que me permitió llegar a ti. 
+                <br>
+                <br>Lo siguiente a ese año nos permitió descubrir que de alguna forma buscabamos paz, pero que no sería fácil, tu pasado seguía fresco pero eso a mi no me dió pie a retirarme sino a ser resiliente ante lo que sentía, sé que pasamos por muchos retos y dolores, pero si en verdad podemos ser una pareja creo que eran espacios que debían darse y saber que es lo que queremos.
+                <br>
+                <br>Al poder compartir este día contigo en una iglesia donde ambos compartimos eso que nos une, hay una certeza que se hace cada vez más fuerte en mi interior. No quiero ser un hombre de paso en tu vida, ni alguien que se rinda fácilmente ante las adversidades. Quiero convertirme en ese pilar firme en el que puedas descansar, un refugio seguro donde sepas que puedes contarme todo sin ser juzgada, abrazándote en cada momento para recordarte que nunca estás sola.
+                <br>
+                <br>He decidido ser un hombre nuevo, y es desde esa transformación profunda que anhelo construir nuestro futuro. Deseo que formemos un lazo irrompible, pero sé que para que sea verdaderamente fuerte, necesitamos a Dios como el centro de nuestro mundo. Por eso, estando aquí al lado del santísimo te pido que consagremos nuestra relación al Sagrado Corazón de Jesús. Quiero que su amor infinito, paciente, humilde y compasivo sea el modelo de lo nuestro; que Él guíe nuestros pasos, bendiga nuestros planes y nos enseña a amarnos desde lo espiritual hasta lo más profundo de nuestros corazones.</em></p>
+            <p>Por todo esto, con el corazón en la mano, sosteniendo este anillo de promesa y la certeza de que Dios nos trajo hasta aquí, quiero hacerte la pregunta más importante: Alberlys, ¿quisieras ser mi novia y permitirme amarte, respetarte y cuidarte bajo la luz del Sagrado Corazón de Jesús?</p>
+            <p class="versiculo">"Que el Sagrado Corazón de Jesús sea el rey de nuestra historia, el refugio de nuestras dudas y el centro de nuestro amor."</p>
+            <p>Te amo, bonita.<br><strong>Con todo mi amor,<br>Jonathan.</strong></p>
+        </div>
+
+        <div class="firma-section" id="firma-box">
+            <h3>Firma tu aceptación</h3>
+            <p style="font-size: 14px; color: #777;">(Dibuja tu firma en el recuadro de abajo)</p>
+            <canvas id="pizarra" width="300" height="150"></canvas>
+            <br>
+            <button onclick="aceptarNoviazgo()">Aceptar Propuesta ❤️</button>
+            <button class="limpiar" onclick="limpiarFirma()">Limpiar</button>
+        </div>
+
+        <div id="mensaje-exito">
+            <h2>¡Amén! ❤️</h2>
+            <p>Nuestra historia bajo el Sagrado Corazón de Jesús acaba de comenzar.</p>
+        </div>
+    </div>
+
+    <script>
+        // Lógica para la pizarra de firma
+        const canvas = document.getElementById('pizarra');
+        const ctx = canvas.getContext('2d');
+        let pintando = false;
+
+        function iniciarPosicion(e) {
+            pintando = true;
+            dibujar(e);
+        }
+
+        function finalizarPosicion() {
+            pintando = false;
+            ctx.beginPath();
+        }
+
+        function dibujar(e) {
+            if (!pintando) return;
+            
+            e.preventDefault(); // Evita que la pantalla del móvil haga scroll al firmar
+            
+            let rect = canvas.getBoundingClientRect();
+            let x, y;
+
+            if (e.touches) {
+                x = e.touches[0].clientX - rect.left;
+                y = e.touches[0].clientY - rect.top;
+            } else {
+                x = e.clientX - rect.left;
+                y = e.clientY - rect.top;
+            }
+
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#4A0E1B';
+
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+
+        // Eventos para Mouse (PC)
+        canvas.addEventListener('mousedown', iniciarPosicion);
+        canvas.addEventListener('mouseup', finalizarPosicion);
+        canvas.addEventListener('mousemove', dibujar);
+
+        // Eventos para Touch (Celular/Tablet)
+        canvas.addEventListener('touchstart', iniciarPosicion, {passive: false});
+        canvas.addEventListener('touchend', finalizarPosicion);
+        canvas.addEventListener('touchmove', dibujar, {passive: false});
+
+        function limpiarFirma() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function aceptarNoviazgo() {
+            // Oculta la caja de firma y muestra el mensaje de éxito
+            document.getElementById('firma-box').style.display = 'none';
+            document.getElementById('mensaje-exito').style.display = 'block';
+            
+            // Aquí podrías agregar efectos como confeti si lo deseas
+        }
+    </script>
+
+</body>
+</html>
